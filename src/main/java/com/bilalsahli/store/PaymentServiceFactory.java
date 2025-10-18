@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Component
@@ -14,7 +15,18 @@ public class PaymentServiceFactory {
         this.services = services.stream().collect(Collectors
                 .toMap(s -> s.Provider().toLowerCase(), s -> s));
     }
+
     public PaymentService get(String provider) {
-        return services.get(provider.toLowerCase());
+
+        if (provider == null || provider.isEmpty()) {
+            throw new IllegalArgumentException("Provider cannot be null or empty");
+        }
+
+        var svc =  services.get(provider.toLowerCase());
+
+        if (svc == null) {
+            throw new NoSuchElementException("Provider not known: " +  provider);
+        }
+        return svc;
     }
 }
