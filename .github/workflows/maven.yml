@@ -18,7 +18,7 @@ on:
     branches: [ "main" ]
 env:
   DOCKER_IMAGE_NAME: store
-  DOCKER_REGISTRY: bilalsahli
+  DOCKER_REGISTRY: bilalsahli/store
 
 
 jobs:
