@@ -18,7 +18,7 @@ on:
     branches: [ "main" ]
 env:
   DOCKER_IMAGE_NAME: store
-  DOCKER_REGISTRY: bilalsahli/store
+  DOCKER_REGISTRY: docker.io/bilalsahli/store
 
 
 jobs:
